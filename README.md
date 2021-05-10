@@ -1,11 +1,11 @@
 | Table schema |                 | 
 | ------------ | --------------- | 
-|              |                 | 
+|    #type     |  #column        | 
 |              |                 | 
 | tasks model  |                 | 
-| type         | column          | 
+| intiger      | status          | 
 | string       | title           | 
-| text         | content         | 
+| conten       | text            | 
 | bigint       | user_id         | 
 |              |                 | 
 |              |                 | 
