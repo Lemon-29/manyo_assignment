@@ -5,7 +5,7 @@
 | tasks model  |                 | 
 | intiger      | status          | 
 | string       | title           | 
-| conten       | text            | 
+| text         | content         | 
 | bigint       | user_id         | 
 |              |                 | 
 |              |                 | 
