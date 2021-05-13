@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [ show edit update destroy ]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tasks = Task.All
+    @tasks = Task.all
   end
 
   def show
@@ -28,7 +28,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    if @task.update(task_params), notice: "Task has been updated!"
+    if @task.update(task_params)
+      redirect_to tasks_path, notice: "Task has been updated!"
     else
       render :edit
     end
