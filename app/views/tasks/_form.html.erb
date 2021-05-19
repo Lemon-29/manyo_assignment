@@ -38,7 +38,7 @@
 
   <div class="field">
     <%= form.label :priority %>
-    <%= form.number_field :priority %>
+    <%= form.select :status_id, {'Pending': 1, 'On-Going': 2, 'Completed': 3} %>
   </div>
 
   <div class="actions">

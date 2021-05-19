@@ -13,6 +13,7 @@
         <td><%= task.expired %></td>
         <td><%= task.date %></td>
         <td><%= task.priority %></td>
+        <p><span class="item_name">Status</span> <%= task.status.status_name  %></p>
         <p><span class="item_name">Task_Name</span> <%= task.title %></p>
         <p><span class="item_name">Content</span> <%= task.content %></p>
         <p><span class="item_name">Submission_Date</span> <%= l task.created_at, format: :long %></p>

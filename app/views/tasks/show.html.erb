@@ -12,6 +12,7 @@
     <p><span class="item_name">Content</span> <%= @task.content %></p>
     <p><span class="item_name">Submission_Date</span> <%= l @task.created_at %></p>
     <p><span class="item_name">Expiration_Date</span> <%= l @task.expired_at %></p>
+    <p><span class="item_name">Status</span> <%= task.status.status_name %></p>
   </li>
 </ul>
 
