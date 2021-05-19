@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
-<P><%= notice %><p>
-<P><%= link_to "sort by expiration date", tasks_path(sort_expired: "true") %><p>
+<h1>タスク一覧/h1>
  <ul class="tasklist">
-
+ <p><%= notice %><p>
+ <p class="sort_expired">
+   <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+   <%= link_to "登録日が新しい順に戻す", tasks_path %>
+ </p>
     <% @tasks.each do |task| %>
       <li>
         <td><%= task.status %></td>
