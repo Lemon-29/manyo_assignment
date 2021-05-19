@@ -1,6 +1,7 @@
 class CreateTasks < ActiveRecord::Migration[5.2]
   def change
-    create_table :tasks do |t|
+    create_table : statuses do |t|
+      t.string :status_name
       t.string :title
       t.text :content
       t.integer :status

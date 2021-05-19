@@ -12,6 +12,11 @@ RSpec.describe 'タスク管理機能', type: :system do
         visit new_task_path
         fill_in "task_title", with: "task_name"
         fill_in "task_content", with: "task_content"
+        find("#task_expired_at_1i").find("option[value='2021']").select_option
+        find("#task_expired_at_2i").find("option[value='3']").select_option
+        find("#task_expired_at_3i").find("option[value='3']").select_option
+        find("#task_expired_at_4i").find("option[value='3']").select_option
+        find("#task_expired_at_5i").find("option[value='3']").select_option
         click_on '登録する'
         expect(page).to have_content 'task_name'
       end
