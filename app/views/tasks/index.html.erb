@@ -2,22 +2,26 @@
 
 <h1>Tasks</h1>
 <P><%= notice %><p>
- <ul>
+<P><%= link_to "sort by expiration date", tasks_path(sort_expired: "true") %><p>
+ <ul class="tasklist">
 
     <% @tasks.each do |task| %>
       <li>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
         <td><%= task.status %></td>
         <td><%= task.expired %></td>
         <td><%= task.date %></td>
         <td><%= task.priority %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <p><span class="item_name">Task_Name</span> <%= task.title %></p>
+        <p><span class="item_name">Content</span> <%= task.content %></p>
+        <p><span class="item_name">Submission_Date</span> <%= l task.created_at, format: :long %></p>
+        <p><span class="item_name">Expiration_Date</span> <%= l task.expired_at, format: :long  %></p>
+        <p class="btns">
+          <%= link_to 'Show', task_path(task.id) %>
+          <%= link_to 'Edit', edit_task_path(task.id), data: { confirm: 'Are you sure to edit?' } %>
+          <%= link_to 'Destroy', task_path(task.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
       </li>
     <% end %>
-  </ul>
 <br>
 
 <p><%= link_to 'New Task', new_task_path %></p>

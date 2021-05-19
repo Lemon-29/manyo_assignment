@@ -1,15 +1,21 @@
 <p id="Details"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<ul class="tasklist">
+  <li>
+    <p><strong>Task_Name:</strong></p>
+    <p><%= @task.title %></P>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
+    <p><strong>Content:</strong></p>
+    <p><%= @task.content %></p>
 
+    <p><span class="item_name">Task_Name</span> <%= @task.title %></p>
+    <p><span class="item_name">Content</span> <%= @task.content %></p>
+    <p><span class="item_name">Submission_Date</span> <%= l @task.created_at %></p>
+    <p><span class="item_name">Expiration_Date</span> <%= l @task.expired_at %></p>
+  </li>
+<ul>
+
+<br>
 <p>
   <strong>Status:</strong>
   <%= @task.status %>
