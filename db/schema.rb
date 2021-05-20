@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_05_14_115947) do
     t.datetime "updated_at", null: false
     t.integer "priority"
     t.datetime "date"
+    t.datetime "expired"
   end
 
 end
