@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
 <h2>タスク一覧/h2>
- <p><%= notice %><p>
+
  <p class="sort_expired">
    <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
    <%= link_to "優先順位でソートする", tasks_path(priority_expired: "true") %>
@@ -21,12 +20,54 @@
 <ul class="tasklist">
   <% @tasks.each do |task| %>
     <li>
-      <p><span class="item_name">Task_Name</span> <%= task.title %></p>
-      <p><span class="item_name">Content</span> <%= task.content %></p>
-      <p><span class="item_name">Submission_Date</span> <%= l task.created_at, format: :long %></p>
-      <p><span class="item_name">Expiration_Date</span> <%= l task.expired_at, format: :long  %></p>
-      <p><span class="item_name">Status</span> <%= task.status %></p>
-      <p><span class="item_name">Priority</span> <%= task.priority %></p>
+    <p>
+        <span class="item_name">
+          Task_Name
+        </span>
+        <div class="item_name tasks-index_item_title" id=<%= "tasks-index_item_title-#{task.id}" %>>
+          <%= task.title %>
+        </div>
+        </p>
+      <p>
+        <span class="item_name">
+          Content
+        </span>
+        <div class="item_name tasks-index_item_content" id=<%= "tasks-index_item_content-#{task.id}" %>>
+          <%= task.content %>
+        </div>
+        </p>
+      <p>
+        <span class="item_name">
+          Submission_Date
+        </span>
+        <div class="item_name tasks-index_item_created_at" id=<%= "tasks-index_item_created_at-#{task.id}" %>>
+          <%= l task.created_at, format: :long %>
+        </div>
+        </p>
+        <p>
+          <span class="item_name">
+            Status
+          </span>
+          <div class="item_name tasks-index_item_status" id=<%= "tasks-index_item_status-#{task.id}" %>>
+            <%= task.status %>
+          </div>
+          </p>
+        <p>
+          <span class="item_name">
+            Priority
+          </span>
+          <div class="item_name tasks-index_item_priprity" id=<%= "tasks-index_item_priprity-#{task.id}" %>>
+            <%= task.priority %>
+          </div>
+        </p>
+        </p>
+      <p>
+        <span class="item_name">
+          Expiration_Date
+        </span>
+        <div class="item_name tasks-index_item_expired_at" id=<%= "tasks-index_item_expired_at-#{task.id}" %>>
+          <%= l task.expired_at, format: :long  %>
+        </div>
       <p class="btns">
         <%= link_to 'Show', task_path(task.id) %>
         <%= link_to 'Edit', edit_task_path(task.id), data: { confirm: 'Are you sure to edit?' } %>
