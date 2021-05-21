@@ -25,7 +25,7 @@
       <p><span class="item_name">Content</span> <%= task.content %></p>
       <p><span class="item_name">Submission_Date</span> <%= l task.created_at, format: :long %></p>
       <p><span class="item_name">Expiration_Date</span> <%= l task.expired_at, format: :long  %></p>
-      <p><span class="item_name">Status</span> <%= task.status.status_name  %></p>
+      <p><span class="item_name">Status</span> <%= task.status %></p>
       <p><span class="item_name">Priority</span> <%= task.priority %></p>
       <p class="btns">
         <%= link_to 'Show', task_path(task.id) %>
