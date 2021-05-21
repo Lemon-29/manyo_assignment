@@ -1,0 +1,2 @@
+class AddPriorityToTask < ApplicationRecord
+end

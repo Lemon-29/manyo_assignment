@@ -4,6 +4,7 @@
  <p><%= notice %><p>
  <p class="sort_expired">
    <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+   <%= link_to "優先順位でソートする", tasks_path(priority_expired: "true") %>
    <%= link_to "登録日が新しい順に戻す", tasks_path %>
   </p>
 
@@ -25,6 +26,7 @@
       <p><span class="item_name">Submission_Date</span> <%= l task.created_at, format: :long %></p>
       <p><span class="item_name">Expiration_Date</span> <%= l task.expired_at, format: :long  %></p>
       <p><span class="item_name">Status</span> <%= task.status.status_name  %></p>
+      <p><span class="item_name">Priority</span> <%= task.priority %></p>
       <p class="btns">
         <%= link_to 'Show', task_path(task.id) %>
         <%= link_to 'Edit', edit_task_path(task.id), data: { confirm: 'Are you sure to edit?' } %>
