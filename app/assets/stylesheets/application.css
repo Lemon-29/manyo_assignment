@@ -15,44 +15,44 @@
  *= require_self
  */
 
-
- *{
-  margin:0 !important;
-  padding:0 !important;
+ html {
+  font-size: 66%;
+}
+body {
+  font-size: 3rem;
+  font-family: sans-serif;
+  line-height: 3;
+  color: #070000;
+  background: turquoise;
 }
 
-.wrapper{
-  min-height: 100vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 190px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+.tasklogo {
+  font-family: 'Audiowide', Tahoma;
 }
 
-.main_body{
-  padding: 10px;
-  margin-left: 20px !important;
-}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 
-.img_hed {
-  width : 100vw ;
-}
+article {
+  padding-top: 40px;
+  padding-bottom: 40px;
 
-.img_foot {
-  width : 100vw ;
-  position: absolute;
-  bottom: 0; /*下に固定*/
-}
+header {
+  background: #42ce9f;
+  color: #fff;
 
-.style1{
-  border-top: 1px solid floralwhite ;
-  border-width: 1px ;
+footer {
+  background: #42ce9f;
+  color: #fff;
 }
-
-.go_center {
-  text-align: center ;
-  margin : 0 auto
+footer .date {
+  text-align: center;
 }
-
-.go_center_table {
-  margin : 0 auto !important; 
-} 
+footer .container {
+  padding: 20px 10px;
+}
+footer .copyright {
+  text-align: center;
+}

@@ -29,7 +29,7 @@
 
   <div class="field">
     <%= form.label :expired_at %>
-    <%= form.date_field :expired_at %>
+    <%= form.datetime_select :expired_at %>
   </div>
 
   <div class="field">
@@ -43,10 +43,9 @@
 </div>
 
 <div class="actions">
-  <%= form.submit "登録する", data: { confirm: "本当に登録していいですか？"} %>
+  <%= form.submit "Register", data: { confirm: "Are you sure you wanna post this? "} %>
 </div>
 <% end %> 
-
 
 <p class="goto_back"><%= link_to "back to top", tasks_path %></p>
 </section>

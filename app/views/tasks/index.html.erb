@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
-<h2>タスク一覧/h2>
-
- <p class="sort_expired">
-   <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
-   <%= link_to "優先順位でソートする", tasks_path(priority_expired: "true") %>
-   <%= link_to "登録日が新しい順に戻す", tasks_path %>
-  </p>
+<article class="tasks_index">
+<h2><font color="white">🌿List of Tasks🌿</font></h2>
+<% if notice %>
+<p class="alert alert-info"><%= notice %></p>
+<% end %>
+<div class="task_nav">
+    <p class="sort_expired flex">
+      <%= link_to "優先順位でソートする", tasks_path(priority_expired: "true") %>
+      <%= link_to "登録日が新しい順に戻す", tasks_path %>
+    </p>
 
   <div class="search_box" >
-  <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
-    <%= form.label :search_title, "Task_Name" %>
-    <%= form.text_field :search_title, placeholder: "Seach by Task Name" %>
-    <%= form.label :search_status %>
-    <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'} %>
-    <%= form.submit "Search", name: "search" %>
-  <% end %>
+      <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
+      <%= form.label :search_title, "Task_Name" %>
+      <%= form.text_field :search_title, placeholder: "Seach by Task Name" %>
+      <%= form.label :search_status %>
+      <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'} %>
+      <%= form.submit "Search", name: "search" %>
+    <% end %>
+  </div>
 </div>
 
 <ul class="tasklist">
@@ -76,6 +79,9 @@
     </li>
   <% end %>
 </ul>
-
-<p><%= link_to 'New Task', new_task_path %></p>
+  <div class="pagination_block">
+    <%= paginate @tasks %>
+  </div>
+  <p class="task_new"><%= link_to 'New_Task', new_task_path %></p>
+</article>
 
