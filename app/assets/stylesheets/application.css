@@ -10,6 +10,49 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+
+ html {
+  font-size: 66%;
+}
+body {
+  font-size: 3rem;
+  font-family: sans-serif;
+  line-height: 3;
+  color: #070000;
+  background: turquoise;
+}
+
+.tasklogo {
+  font-family: 'Audiowide', Tahoma;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+
+article {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+header {
+  background: #42ce9f;
+  color: #fff;
+
+footer {
+  background: #42ce9f;
+  color: #fff;
+}
+footer .date {
+  text-align: center;
+}
+footer .container {
+  padding: 20px 10px;
+}
+footer .copyright {
+  text-align: center;
+}

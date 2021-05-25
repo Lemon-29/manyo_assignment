@@ -1,3 +1,4 @@
+<section class="form_block">
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -27,21 +28,24 @@
   </div>
 
   <div class="field">
-    <%= form.label :expired %>
-    <%= form.datetime_select :expired %>
+    <%= form.label :expired_at %>
+    <%= form.datetime_select :expired_at %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
+  <%= form.label :status %>
+  <%= form.select :status, Task.statuses.keys %>
+</div>
 
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.number_field :priority %>
-  </div>
+<div class="field">
+  <%= form.label :priority %>
+  <%= form.select :priority, Task.priorities.keys %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="actions">
+  <%= form.submit "Register", data: { confirm: "Are you sure you wanna post this? "} %>
+</div>
+<% end %> 
+
+<p class="goto_back"><%= link_to "back to top", tasks_path %></p>
+</section>

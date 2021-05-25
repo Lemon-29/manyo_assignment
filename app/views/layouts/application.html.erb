@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ManyoAssignment</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
   <body>
-    <%= yield %>
+    <head>
+      <title>ManyoAssignment</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    
+      <header>  
+      <div class="container">
+        <h1 class = "tasklogo"><%= link_to '＿/＿/＿/＿/■■Task Application■■＿/＿/＿/＿/', tasks_path %></h1>  
+      </div>
+      </header>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <footer>
+        <div class="container">
+        <p class="date"><%= date = Time.new %></p>
+        <p class="copyright">Lisa🖤All Rights Reseerved.</p>
+        </div>  
   </body>
 </html>
