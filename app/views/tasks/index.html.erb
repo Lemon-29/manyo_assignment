@@ -5,17 +5,18 @@
 <% end %>
 <div class="task_nav">
     <p class="sort_expired flex">
-      <%= link_to "優先順位でソートする", tasks_path(priority_expired: "true") %>
+      <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true"), id: 'tasks_index_sort-priority' %>
+      <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), id: 'tasks_index_sort-expired' %>
       <%= link_to "登録日が新しい順に戻す", tasks_path %>
     </p>
 
   <div class="search_box" >
       <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
       <%= form.label :search_title, "Task_Name" %>
-      <%= form.text_field :search_title, placeholder: "Seach by Task Name" %>
+      <%= form.text_field :search_title, placeholder: "Seach by Task Name", id: 'tasks_index_search-title' %>
       <%= form.label :search_status %>
-      <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'} %>
-      <%= form.submit "Search", name: "search" %>
+      <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'}, id: 'search_status' %>
+      <%= form.submit "Search", name: "search", id: 'tasks_index_search-submit' %>
     <% end %>
   </div>
 </div>

@@ -2,11 +2,12 @@
   <h1>詳細画面</h1>
   <ul class="tasklist">
     <li>
-<ul class="tasklist">
-<p><strong>Content:</strong></p>
-<p><%= @task.content %></p>
+      <p><strong>Task_Name:</strong></p>
+      <p><%= @task.title %></P>
+      <p><strong>Content:</strong></p>
+      <p><%= @task.content %></p>
 
-<p><span class="item_name">Task_Name</span> <%= @task.title %></p>
+      <p><span class="item_name">Task_Name</span> <%= @task.title %></p>
       <p><span class="item_name">Content</span> <%= @task.content %></p>
       <p><span class="item_name">Submission_Date</span> <%= l @task.created_at %></p>
       <p><span class="item_name">Expiration_Date</span> <%= l @task.expired_at %></p>
@@ -24,7 +25,7 @@
 <br>
 <p>
   <strong>Status:</strong>
-  <%= @task.status %>
+  <%#= @task.status %>
 </p>
 
 <p>
@@ -33,13 +34,8 @@
 </p>
 
 <p>
-  <strong>Datetime:</strong>
-  <%= @task.date %>
-</p>
-
-<p>
   <strong>Priority:</strong>
-  <%= @task.priority %>
+  <%#= @task.priority %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |

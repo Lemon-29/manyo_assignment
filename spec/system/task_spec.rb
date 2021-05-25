@@ -6,18 +6,17 @@ RSpec.describe 'タスク管理機能', type: :system do
 
   before do
     visit tasks_path
-
-    fill_in "タスク名", with: "task_name"
-    fill_in "task[content]", with: "task_content"
-    find("#task_expired_at_1i").find("option[value='2021']").select_option
-    find("#task_expired_at_2i").find("option[value='5']").select_option
-    find("#task_expired_at_3i").find("option[value='3']").select_option
-    find("#task_expired_at_4i").find("option[value='10']").select_option
-    find("#task_expired_at_5i").find("option[value='15']").select_option
-    find("#task_status").find("option[value='着手']").select_option
-    click_on '登録'
-    expect(page).to have_content 'task_name'
-    expect(page).to have_content '着手'
+    # fill_in "タスク名", with: "task_name"
+    # fill_in "task[content]", with: "task_content"
+    # find("#task_expired_at_1i").find("option[value='2021']").select_option
+    # find("#task_expired_at_2i").find("option[value='5']").select_option
+    # find("#task_expired_at_3i").find("option[value='3']").select_option
+    # find("#task_expired_at_4i").find("option[value='10']").select_option
+    # find("#task_expired_at_5i").find("option[value='15']").select_option
+    # find("#task_status").find("option[value='着手']").select_option
+    # click_on '登録'
+    # expect(page).to have_content 'task_name'
+    # expect(page).to have_content '着手'
   end
       
 
@@ -39,9 +38,7 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context 'タスクが終了期限の降順に並んでいる場合' do
       it '終了期限の遅いタスクが一番上に表示される' do
-        within '.sort_expired' do
-          click_on '終了期限でソートする'
-        end
+        find('#tasks_index_sort-expired').click
         task_list = all('.tasks-index_item_title')
         expect(task_list.first).to have_content Task.order(expired_at: :desc).first.title
       end
@@ -49,9 +46,7 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context 'タスクが優先順位の高い順に並んでいる場合' do
       it '優先順位の高いタスクが一番上に表示される' do
-        within '.sort_expired' do
-          click_on '優先順位でソートする'
-        end
+        find('#tasks_index_sort-priority').click
         task_list = all('.tasks-index_item_title')
         expect(task_list.first).to have_content Task.order(priority: :desc).first.title
       end
@@ -68,18 +63,20 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'ステータスで検索した場合' do
       it '該当ステータスのタスクが表示される' do
-        find("#search_status").find("option[value='完了']").select_option
+        find("#search_status").find("option[value='3']").select_option
+        sleep 0.5
         click_on 'search'
-        expect(page).to have_content 'task3'
+        expect(page).to have_content 'Completed'
       end
     end
     context 'タイトルとステータスの両方で検索した場合' do
       it '該当のタスクが表示される' do
         fill_in "search_title", with: "2"
-        find("#search_status").find("option[value='着手']").select_option
+        find("#search_status").find("option[value='2']").select_option
+        sleep 0.5
         click_on 'search'
         expect(page).to have_content 'task2'
-        expect(page).to have_content '着手'
+        expect(page).to have_content 'On_going'
       end
     end
   end
