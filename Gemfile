@@ -41,3 +41,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'jquery-rails'
+gem 'bcrypt'
