@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     else
       @user = User.new
     end
+  end
 
   def create
     @user = User.new(user_params)
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
   def show
     if @user.id != current_user.id
       redirect_to tasks_path
