@@ -1,25 +1,18 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task) { FactoryBot.create(:task, title: 'task', content: 'task', expired_at: '2021-05-1 03:33:00', status: 1, priority: 1) }
-  let!(:task2) { FactoryBot.create(:task, title: 'task2', content: 'task2', expired_at: '2021-05-20 03:33:00', status: 2, priority: 2) }
-  let!(:task3) { FactoryBot.create(:task, title: 'task3', content: 'task3', expired_at: '2021-05-10 03:33:00', status: 3, priority: 3) }
-
+  let(:user) { FactoryBot.create(:user) }
+  let!(:task) { FactoryBot.create(:task, user_id: user.id) }
+  let!(:task2) { FactoryBot.create(:task2, user_id: user.id) }
+  let!(:task3) { FactoryBot.create(:task3, user_id: user.id) }
   before do
     visit tasks_path
-    # fill_in "タスク名", with: "task_name"
-    # fill_in "task[content]", with: "task_content"
-    # find("#task_expired_at_1i").find("option[value='2021']").select_option
-    # find("#task_expired_at_2i").find("option[value='5']").select_option
-    # find("#task_expired_at_3i").find("option[value='3']").select_option
-    # find("#task_expired_at_4i").find("option[value='10']").select_option
-    # find("#task_expired_at_5i").find("option[value='15']").select_option
-    # find("#task_status").find("option[value='着手']").select_option
-    # click_on '登録'
-    # expect(page).to have_content 'task_name'
-    # expect(page).to have_content '着手'
+    visit new_session_path
+    fill_in "メールアドレス", with: "user1@example.com"
+    fill_in "パスワード", with: "password1"
+    within '.actions' do
+      click_on 'ログイン'
   end
       
-
   describe '一覧表示機能' do
     context '一覧画面に遷移した場合' do
       it '作成済みのタスク一覧が表示される' do

@@ -1,6 +1,9 @@
 <article class="admin_show">
   <h2>🖥管理画面：ユーザー情報詳細🖥</h2>
-  <section class="profile">
+  <% if notice %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+<section class="profile_block">
     <p><span class="item_name">ID</span> <%= @user.id %></p>
     <p><span class="item_name">名前</span> <%= @user.name %></p>
     <p><span class="item_name">メールアドレス</span> <%= @user.email %></p>

@@ -6,3 +6,14 @@ ja:
       task:
         title: 🖤Title🖤
         content: 🖤Content🖤
+        expired_at: 終了期限
+        status: ステータス
+        priority: 優先順位
+      user:
+        name: 名前
+        email: メールアドレス
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+        admin: 管理者 

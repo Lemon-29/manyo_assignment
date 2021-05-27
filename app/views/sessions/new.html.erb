@@ -1,14 +1,14 @@
-  <h1>🕊Login🕊</h1>
+  <h2>🕊Login🕊</h2>
   <section class="form_block">
     <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
       <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+        <%= f.label :email, "email"  %>
+        <%= f.email_field :email%>
         <div class="field">
-        <%= f.label :password %>
+        <%= f.label :password, "password" %>
         <%= f.password_field :password %>
       </div>
-      <div class="action">
+      <div class="actions">
         <%= f.submit "Log in" %>
       </div>
     <% end %>

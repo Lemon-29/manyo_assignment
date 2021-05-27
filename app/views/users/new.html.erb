@@ -1,15 +1,16 @@
-<articla class="user_new">
-  <h1>🔑Sign_up🔑</h1>
+<article class="user_new">
+  <h2>🔑Sign_up🔑</h2>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+  <div id="error_explanation" class="alert alert-warning">
+      <h3><%= @user.errors.count %>件のエラーがあります。</h3>
       <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
   <section class="form_block">
     <%= form_with(model: @user, local: true) do |f| %>
       <div class="field">
@@ -17,21 +18,21 @@
         <%= f.text_field :name %>
       </div>
         <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email %>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
         </div>
         <div class="field">
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
         </div>
         <div class="field">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
         </div>
         <div class="actions">
-        <%= f.submit "Create my account" %>
-      </div>
-      <li><%= message %></li>
+          <%= f.submit "Create my account" %>
+          <%= f.submit %>
+        </div>
       <% end %>
   </section>
 </article>
