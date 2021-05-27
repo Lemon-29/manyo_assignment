@@ -19,8 +19,8 @@
           <% if admin? %>
               <%= link_to "Admin_Management_Screen", admin_users_path %>
             <% end %>
-            <%= link_to "Profile", user_path(current_user.id) %>
-            <%= link_to "Log_out", session_path(current_user.id), method: :delete %>
+            <%= link_to "🍀Profile🍀", user_path(current_user.id) %>
+            <%= link_to "🔑Log_out🔑", session_path(current_user.id), method: :delete %>
           <% else %>
             <%= link_to "Sign_up", new_user_path %>
             <%= link_to "Log_in", new_session_path %>
