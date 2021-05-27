@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  include UserHelper
+  include UsersHelper
   before_action :login_required
 
   private

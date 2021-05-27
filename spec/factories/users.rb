@@ -3,12 +3,12 @@ FactoryBot.define do
     name { "test_user1" }
     email { "user1@example.com" }
     password { "password1" }
-    admin { "一般" }
+    admin { false }
   end
   factory :admin_user, class: "User" do
     name { "test_user2" }
     email { "user2@example.com" }
     password { "password2" }
-    admin { "管理者" }
+    admin { true }
   end
 end
