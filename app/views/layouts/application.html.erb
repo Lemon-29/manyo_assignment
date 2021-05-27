@@ -16,6 +16,9 @@
           <h1 class="tasklogo item"><%= link_to '＿/＿/＿/＿/■■Task Application■■＿/＿/＿/＿/', tasks_path %></h1>
           <div class="btns item">
             <% if logged_in? %>
+            <% if admin? %>
+                <%= link_to "Admin_Management_Screen", admin_users_path %>
+              <% end %>
               <%= link_to "Profile", user_path(current_user.id) %>
               <%= link_to "Log_out", session_path(current_user.id), method: :delete %>
             <% else %>
