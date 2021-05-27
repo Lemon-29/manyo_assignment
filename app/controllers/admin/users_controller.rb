@@ -1,10 +1,10 @@
 class Admin::UsersController < ApplicationController
   before_action :if_not_admin
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+  PER = 3
   def index
-    @users = User.select(:id, :name).page(params[:page]).per(5)
-  end
+    @users = User.select(:id, :name).page(params[:page]).per(PER)
+  end  end
 
   def new
     @user = User.new
@@ -18,6 +18,7 @@ class Admin::UsersController < ApplicationController
       render :new
     end
   end
+  
   def edit
   end
 
@@ -30,14 +31,14 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @tasks = @user.tasks.page(params[:page]).per(5)
+    @tasks = @user.tasks.page(params[:page]).per(PER)
   end
 
   def destroy
     if @user.destroy
       redirect_to admin_users_path, notice:"User was successfully destroyed."
     else
-      redirect_to admin_users_path, notice:"You cannot destroy User because you are the only Admin User "
+      redirect_to admin_users_path, notice:"You cannot destroy User because Admin User has more than 1user atleast "
     end
   end
   
@@ -52,6 +53,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def if_not_admin
-    redirect_to root_path, notice:"You are not permitted to access because you are NOT the authorized admin user" unless current_user.admin?
-    end
+    redirect_to root_path, notice:"You are not permitted to access because you are NOT the authorized admin user" unless current admin?
+  end
 end

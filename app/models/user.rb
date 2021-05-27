@@ -7,7 +7,7 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
-  enum admin: { none: false, admin: true}
+  enum admin: { Generate: false, admin: true}
   before_destroy :ensure_has_admin
   private
   def ensure_has_admin
