@@ -234,7 +234,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
-  x86_64-darwin-20
+  ruby
 
 DEPENDENCIES
   bcrypt
@@ -265,4 +265,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   2.2.11
+   1.17.2
