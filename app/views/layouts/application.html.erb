@@ -29,11 +29,7 @@
       </div>
     </header>
 
-    <div class="container">
-      <%= link_to "🔐Sign up🔐", new_user_path %>
-      <%= link_to "🖋Login🖋", new_session_path %>
       <%= yield %>
-    </div>
     <footer>
       <div class="container">
         <p class="date"><%= date = Time.new %></p>
