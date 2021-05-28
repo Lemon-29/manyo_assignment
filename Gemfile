@@ -31,7 +31,6 @@ group :test do
   gem 'selenium-webdriver'
   
   gem 'chromedriver-helper'
-  gem 'capybara', '>= 2.15'
   gem 'webdrivers'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
