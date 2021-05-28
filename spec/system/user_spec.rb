@@ -4,11 +4,11 @@ RSpec.describe 'ユーザー登録機能', type: :system do
     context 'ユーザーを新規作成した場合' do
       it '作成したユーザーが表示される' do
         visit new_user_path
-        fill_in "名前", with: "new_user_name"
-        fill_in "メールアドレス", with: "new@example.com"
-        fill_in "パスワード", with: "password"
-        fill_in "確認用パスワード", with: "password"
-        click_on '登録する'
+        fill_in "♣️Name♣️", with: "new_user_name"
+        fill_in "♣️EmailAddress♣️", with: "new@example.com"
+        fill_in "♣️Password♣️", with: "password"
+        fill_in "♣️Confirm password♣️", with: "password"
+        click_on '♣️Register♣️'
         expect(page).to have_content 'new_user_name'
         expect(page).to have_content 'new@example.com'
       end

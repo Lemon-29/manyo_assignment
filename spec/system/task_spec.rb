@@ -40,7 +40,6 @@ RSpec.describe 'タスク管理機能', type: :system do
     context 'タスクが優先順位の高い順に並んでいる場合' do
       it '優先順位の高いタスクが一番上に表示される' do
         find('#tasks_index_sort-priority').click
-        sleep(1)
         task_list = all('.tasks-index_item_title')
         expect(task_list.first).to have_content Task.order(priority: :desc).first.title
       end

@@ -17,7 +17,7 @@
         <div class="btns item">
           <% if logged_in? %>
           <% if admin? %>
-              <%= link_to "Admin_Management_Screen", admin_users_path %>
+              <%= link_to "🖥Admin_Management_Screen🖥", admin_users_path %>
             <% end %>
             <%= link_to "🍀Profile🍀", user_path(current_user.id) %>
             <%= link_to "🔑Log_out🔑", session_path(current_user.id), method: :delete %>
@@ -37,8 +37,12 @@
     <footer>
       <div class="container">
         <p class="date"><%= date = Time.new %></p>
-        <p class="copyright">Lisa🖤All Rights Reserved.</p>
-      </div>  
+      </div>
+      
+      <footer id="globalFooter" class="st-Footer">
+      <div class="st-Footer_container"></div>
+      <div class="st-Footer_copyright">Copyright © 2021 LISA🖤INC All RIGHTS RESERVED</div>
+     
     </footer>
   </body>
 </html>
