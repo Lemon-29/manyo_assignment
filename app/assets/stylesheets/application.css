@@ -43,7 +43,7 @@ article {
 }
 
 header {
-  background: #42ce9f;
+  background-color:lemonchiffon;
   color: #fff;
 }
 
@@ -78,8 +78,7 @@ footer .copyright {
 
 .st-Footer_copyright {
   background-color:#333;
-  height:50px;
-  width:1400px;
+  width:100%;
   display:table-cell;
   vertical-align:middle;
   text-align:center;
@@ -88,4 +87,11 @@ footer .copyright {
   margin-right: auto;
   margin-left : auto;
   color: white;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
