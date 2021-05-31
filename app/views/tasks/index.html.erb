@@ -10,16 +10,16 @@
       <%= link_to "登録日が新しい順に戻す", tasks_path %>
     </p>
 
-  <div class="search_box" >
-      <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
-      <%= form.label :search_title, "Task_Name" %>
-      <%= form.text_field :search_title, placeholder: "Seach by Task Name", id: 'tasks_index_search-title' %>
-      <%= form.label :search_status %>
-      <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'}, id: 'search_status' %>
-      <%= form.label :search_label, "Label" %>
-      <%= form.select :search_label, Label.pluck(:name, :id), { include_blank: 'Please select' } %>
-      <%= form.submit "Search", name: "search", id: 'tasks_index_search-submit' %>
-    <% end %>
+<div class="search_box" >
+  <%= form_with(local: true, method: :get, url: tasks_path ) do |form| %>
+    <p class="input"><%= form.label :search_title, "Task_of_name" %>
+    <%= form.text_field :search_title, placeholder: "Seach by Task name" %></p>
+    <p class="input"><%= form.label :search_status, "Label" %>
+    <%= form.select :search_status, Task.statuses.keys, { include_blank: 'Pls Select'} %></p>
+    <p class="input"><%= form.label :search_label, "ラベル" %>
+    <%= form.select :search_label, Label.pluck(:name, :id), { include_blank: 'Pls Select' } %></p>
+    <p class="input"><%= form.submit "Serach", name: "search" %></p>
+  <% end %>
   </div>
 </div>
 
@@ -94,7 +94,7 @@
       </div>
       <p class="btns">
         <%= link_to 'Show', task_path(task.id) %>
-        <%= link_to 'Edit', edit_task_path(task.id), data: { confirm: 'Are you sure to edit?' } %>
+        <%= link_to 'Edit', edit_task_path(task.id), class: "edit_task" %>
         <%= link_to 'Destroy', task_path(task.id), method: :delete, data: { confirm: 'Are you sure?' } %>
       </p>
     </li>
