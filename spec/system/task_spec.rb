@@ -68,6 +68,9 @@ RSpec.describe 'タスク管理機能', type: :system do
         find("#search_status").find("option[value='2']").select_option
         sleep 0.5
         click_on 'search'
+        page.accept_confirm do
+          click_on 'Register'
+        end
         expect(page).to have_content 'task2'
         expect(page).to have_content 'On_going'
       end
