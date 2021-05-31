@@ -3,27 +3,38 @@ class TasksController < ApplicationController
   PER = 3
   
   def index
-    if params[:sort_expired]
-    #   @tasks = Task.order(expired_at: :desc)
-    # elsif params[:sort_priority]
-      @tasks = Task.order(expired_at: :desc).page(params[:page]).per(PER)
-    elsif params[:sort_priority]
-      @tasks = Task.order(priority: :desc).page(params[:page]).per(PER)
-    elsif params[:search]
-      if params[:search_title].present? && params[:search_status].present?
-        @tasks = Task.search_title(params[:search_title]).search_status(params[:search_status]).page(params[:page]).per(PER)
-      elsif params[:search_title].present?
-        @tasks = Task.search_title(params[:search_title]).page(params[:page]).per(PER)
-      elsif params[:search_status].present?
-        @tasks = Task.search_status(params[:search_status]).page(params[:page]).per(PER)
-      else
-        @tasks = Task.order(created_at: :desc).page(params[:page]).per(PER)
-      end
-    else
-      @tasks = Task.order(created_at: :desc).page(params[:page]).per(PER)
+    @tasks = current_user.tasks
+
+    @tasks = @tasks.order(expired_at: :desc) if params[:sort_expired]# 後置if
+    @tasks = @tasks.order(priority: :desc) if params[:sort_priority]# 後置if
+
+    if params[:search]
+      @tasks = @tasks.search_title(params[:search_title]) if params[:search_title]
+      @tasks = @tasks.search_status(params[:search_status]) if params[:search_status] != ""
     end
-  
+
+    @tasks = @tasks.page(params[:page]).per(PER)
   end
+
+  #   if params[:sort_expired]
+  #     @tasks = current_user.tasks.order(expired_at: :desc).page(params[:page]).per(PER)
+  #   elsif params[:sort_priority]
+  #     @tasks = current_user.tasks.order(priority: :desc).page(params[:page]).per(PER)
+  #   elsif params[:search]
+  #     if params[:search_title].present? && params[:search_status].present?
+  #       @tasks = current_user.tasks.search_title(params[:search_title]).search_status(params[:search_status]).page(params[:page]).per(PER)
+  #     elsif params[:search_title].present?
+  #       @tasks = current_user.tasks.search_title(params[:search_title]).page(params[:page]).per(PER)
+  #     elsif params[:search_status].present?
+  #       @tasks = current_user.tasks.search_status(params[:search_status]).page(params[:page]).per(PER)
+  #     else
+  #       @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(PER)
+  #     end
+  #   else
+  #     @tasks = current_user.tasks.order(created_at: :desc).page(params[:page]).per(PER)
+  #   end
+  
+  # end
 
   def show
   end
@@ -36,7 +47,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
       if @task.save
         redirect_to tasks_path,notice: "Task has been created!"
       else
@@ -68,6 +79,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :content, :expired_at, :status, :priority)
+      params.require(:task).permit(:title, :content, :expired_at, :status, :priority, :user_id)
     end
 end

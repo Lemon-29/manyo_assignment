@@ -6,3 +6,14 @@ ja:
       task:
         title: 🖤Title🖤
         content: 🖤Content🖤
+        expired_at: 🖤Deadline🖤
+        status: 🖤Status🖤
+        priority: 🖤Priority🖤
+      user:
+        name: 🖤Name🖤
+        email: 💌EmailAddress💌
+        current_password: 🔑Password🔑
+        password: Password
+        password_confirmation: Password confirmation
+        remember_me: 🔐Remember me🔐
+        admin: Administorator

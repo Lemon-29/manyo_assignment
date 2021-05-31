@@ -31,7 +31,6 @@ group :test do
   gem 'selenium-webdriver'
   
   gem 'chromedriver-helper'
-  gem 'capybara', '>= 2.15'
   gem 'webdrivers'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
@@ -41,3 +40,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'jquery-rails'
+gem 'bcrypt'
+gem 'faker'

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
+  <div class="wrapper">
     <head>
       <title>ManyoAssignment</title>
       <%= csrf_meta_tags %>
@@ -11,18 +12,31 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     
-      <header>  
-      <div class="container">
-        <h1 class = "tasklogo"><%= link_to '＿/＿/＿/＿/■■Task Application■■＿/＿/＿/＿/', tasks_path %></h1>  
+    <header style="padding: 0 20px;">  
+      <div class="flex">
+        <h1 class="tasklogo item"><%= link_to '＿/＿/＿/＿/■■Task Application■■＿/＿/＿/＿/', tasks_path %></h1>
+        <div class="btns item">
+          <% if logged_in? %>
+          <% if admin? %>
+              <%= link_to "🖥Admin_Management_Screen🖥", admin_users_path %>
+            <% end %>
+            <%= link_to "🍀Profile🍀", user_path(current_user.id) %>
+            <%= link_to "🔑Log_out🔑", session_path(current_user.id), method: :delete %>
+          <% else %>
+            <%= link_to "Sign_up", new_user_path %>
+            <%= link_to "Log_in", new_session_path %>
+          <% end %>
+        </div>
       </div>
-      </header>
-      <div class="container">
-        <%= yield %>
+    </header>
+    <div class="application-wrapper">
+      <%= yield %>
+    </div>
+      
+    <footer id="globalFooter" class="st-Footer">
+      <div class="st-Footer_container"></div>
+      <div class="st-Footer_copyright">🍋Copyright © 2021 LISA💛INC All RIGHTS RESERVED🍋</div>
       </div>
-      <footer>
-        <div class="container">
-        <p class="date"><%= date = Time.new %></p>
-        <p class="copyright">Lisa🖤All Rights Reseerved.</p>
-        </div>  
+    </footer>
   </body>
 </html>

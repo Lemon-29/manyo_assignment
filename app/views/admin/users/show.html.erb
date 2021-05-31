@@ -1,0 +1,40 @@
+<article class="admin_show">
+  <h2>🖥管理画面：ユーザー情報詳細🖥</h2>
+  <% if notice %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+<section class="profile_block">
+    <p><span class="item_name">ID</span> <%= @user.id %></p>
+    <p><span class="item_name">名前</span> <%= @user.name %></p>
+    <p><span class="item_name">メールアドレス</span> <%= @user.email %></p>
+    <p><span class="item_name">👑Mannagement of Authority👑</span> <%= @user.admin == "Administrator" ? "included" : "Not included" %></p>
+
+</section>
+  <ul class="tasklist">
+    <% @tasks.each do |task| %>
+    <li>
+      <div class="upper">
+        <p><span class="item_name">Name of Task</span> <%= task.title %></p>
+        <p><span class="item_name">Content</span> <%= task.content %></p>
+      </div>
+      <div class="lower">
+        <p><span class="item_name">Date</span> <%= l task.created_at, format: :long %></p>
+        <p><span class="item_name">Expired_at</span> <%= l task.expired_at, format: :long %></p>
+        <p><span class="item_name">Status</span> <%= task.status %></p>
+        <p><span class="item_name">priority</span> <%= task.priority %></p>
+      </div>
+       <div class="btns">
+        <div class="innerblock">
+          <%= link_to 'Check the details', task_path(task.id), class: "show_task" %>
+          <%= link_to "Edit tasks", edit_task_path(task.id), data: { confirm: 'Are you sure you wanna edit?' }, class: "edit_task" %>
+          <%= link_to 'Delate the task', task_path(task.id), method: :delete ,data: { confirm: 'Are you sure you wanna delete it?' }, class: "delete_task" %>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+  <div class="pagination_block">
+    <%= paginate @tasks %>
+  </div>
+  <p class="goto_back"><%= link_to " 🔙Go back to the List of User🔙", admin_users_path %></p>
+</article> 
