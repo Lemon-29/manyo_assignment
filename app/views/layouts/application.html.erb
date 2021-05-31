@@ -12,7 +12,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     
-    <header>  
+    <header style="padding: 0 20px;">  
       <div class="flex">
         <h1 class="tasklogo item"><%= link_to '＿/＿/＿/＿/■■Task Application■■＿/＿/＿/＿/', tasks_path %></h1>
         <div class="btns item">
@@ -29,14 +29,11 @@
         </div>
       </div>
     </header>
-
+    <div class="application-wrapper">
       <%= yield %>
-    <footer>
-      <div class="container">
-        <p class="date"><%= date = Time.new %></p>
-      </div>
+    </div>
       
-      <footer id="globalFooter" class="st-Footer">
+    <footer id="globalFooter" class="st-Footer">
       <div class="st-Footer_container"></div>
       <div class="st-Footer_copyright">🍋Copyright © 2021 LISA💛INC All RIGHTS RESERVED🍋</div>
       </div>

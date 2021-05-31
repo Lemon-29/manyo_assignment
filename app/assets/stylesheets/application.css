@@ -95,3 +95,11 @@ footer .copyright {
   padding-bottom: 120px;/*←footerの高さ*/
   box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
+
+.application-wrapper {
+  padding: 0 32px;
+}
+
+body {
+  margin: 0;
+}
