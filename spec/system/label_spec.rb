@@ -40,6 +40,7 @@ RSpec.describe 'ラベル登録機能', type: :system do
     context 'タスク編集時にラベルを別のものにした場合' do
       it '変更したタスクにラベルが紐づいて表示される' do
         task2 = FactoryBot.create(:task2, user_id: @user.id)
+        FactoryBot.create(:label3)
         visit edit_task_path(task2.id)
         check 'label_name3'
         uncheck 'label_name2'
