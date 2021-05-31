@@ -80,6 +80,16 @@
           <%= task.user.name  %>
         </div>
       </p>
+      <div class="label_block">
+          <% task.labels.each do |label| %>
+            <span><%= label.name %></span>
+          <% end %>
+        </div>
+        <div class="label_block">
+          <% task.labels.each do |label| %>
+            <span><%= label.name %></span>
+        <% end %>
+      </div>
       <p class="btns">
         <%= link_to 'Show', task_path(task.id) %>
         <%= link_to 'Edit', edit_task_path(task.id), data: { confirm: 'Are you sure to edit?' } %>
