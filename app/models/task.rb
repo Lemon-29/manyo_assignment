@@ -11,6 +11,6 @@ class Task < ApplicationRecord
   enum priority: { Low: 1, Middle: 2, High: 3 }
   
   scope :search_title, -> (search_title) { where("title LIKE ?", "%#{search_title}%")}
-  
   scope :search_status, -> (search_status) { where(status: search_status)}
+  scope :search_label, -> (search_label) { join(:labels).where(labels: { id: search_label })}
 end

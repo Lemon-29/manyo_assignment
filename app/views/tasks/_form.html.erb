@@ -37,8 +37,10 @@
   <%= form.select :priority, Task.priorities.keys %>
 </div>
 
-<div class="field">
-  <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) %>
+<div class="field check_box">
+  <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) do |b|
+    b.label(:"data-value" => b.value) { b.check_box + b.text }
+  <% end %>
 </div>
 
 <div class="actions">

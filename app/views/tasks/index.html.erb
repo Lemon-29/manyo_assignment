@@ -16,6 +16,8 @@
       <%= form.text_field :search_title, placeholder: "Seach by Task Name", id: 'tasks_index_search-title' %>
       <%= form.label :search_status %>
       <%= form.select :search_status, {'Pending': 1, 'On-Going': 2, 'Completed': 3}, { include_blank: 'Please select'}, id: 'search_status' %>
+      <%= form.label :search_label, "Label" %>
+      <%= form.select :search_label, Label.pluck(:name, :id), { include_blank: 'Please select' } %>
       <%= form.submit "Search", name: "search", id: 'tasks_index_search-submit' %>
     <% end %>
   </div>
