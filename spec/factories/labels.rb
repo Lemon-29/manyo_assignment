@@ -5,5 +5,7 @@ FactoryBot.define do
   factory :label2, class: "Label" do
     name { "label_name2" }
   end
-  factory :label3, class: "Labe
+  factory :label3, class: "Label" do
+    name { "label_name3" }
+  end
 end
