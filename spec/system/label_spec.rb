@@ -18,8 +18,6 @@ RSpec.describe 'ラベル登録機能', type: :system do
     context 'タスク作成時にラベルを選択した場合' do
       it 'タスクにラベルが紐づいて表示される' do
         FactoryBot.create(:label)
-        # FactoryBot.create(:label2)
-        # FactoryBot.create(:label3)
         visit new_task_path
         fill_in "タスク名", with: "task_name"
         fill_in "内容", with: "task_content"
