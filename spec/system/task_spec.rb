@@ -4,6 +4,7 @@ RSpec.describe 'タスク管理機能', type: :system do
   let!(:task) { FactoryBot.create(:task, user_id: user.id) }
   let!(:task2) { FactoryBot.create(:task2, user_id: user.id) }
   let!(:task3) { FactoryBot.create(:task3, user_id: user.id) }
+
   before do
     visit tasks_path
     visit new_session_path
@@ -21,6 +22,7 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list).to have_content task.title
       end
     end
+  end
 
     context 'タスクが作成日時の降順に並んでいる場合' do
       it '新しいタスクが一番上に表示される' do
@@ -39,12 +41,15 @@ RSpec.describe 'タスク管理機能', type: :system do
 
     context 'タスクが優先順位の高い順に並んでいる場合' do
       it '優先順位の高いタスクが一番上に表示される' do
-        find('#tasks_index_sort-priority').click
+        # within '.sort_expired' do
+          click_on '優先順位でソートする'
+        # end
         task_list = all('.tasks-index_item_title')
-        expect(task_list.first).to have_content Task.order(priority: :desc).first.title
+        # expect(task_list.first).to have_content Task.order(priority: :desc).first.title
+        expect(task_list.first).to have_content "task3_title"
+
       end
     end
-  end
 
   describe '検索機能' do
     context 'タイトルで検索した場合' do
@@ -56,16 +61,17 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context 'ステータスで検索した場合' do
       it '該当ステータスのタスクが表示される' do
-        find("#search_status").find("option[value='3']").select_option
+        select 'Completed', from: 'search_status'
         sleep 0.5
         click_on 'search'
         expect(page).to have_content 'Completed'
+        expect(page).to have_content 'task3_content'
       end
     end
     context 'タイトルとステータスの両方で検索した場合' do
       it '該当のタスクが表示される' do
         fill_in "search_title", with: "2"
-        find("#search_status").find("option[value='2']").select_option
+        select 'On_going', from: 'search_status'
         sleep 0.5
         click_on 'search'
         expect(page).to have_content 'task2'

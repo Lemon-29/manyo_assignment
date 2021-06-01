@@ -1,11 +1,11 @@
 <section class="form_block">
-<%= form_with(model: task, local: true) do |form| %>
-  <% if task.errors.any? %>
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
-      <% task.errors.full_messages.each do |message| %>
+      <% @task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -37,8 +37,14 @@
   <%= form.select :priority, Task.priorities.keys %>
 </div>
 
+<div class="field check_box">
+  <%= form.collection_check_boxes(:label_ids, Label.all, :id, :name) do |b| %>
+    <%= b.label(:"data-value" => b.value) { b.check_box + b.text } %> 
+  <% end %>
+</div>
+
 <div class="actions">
-  <%= form.submit "Register", data: { confirm: "Are you sure you wanna post this? "} %>
+  <%= form.submit "Register", data: { confirm: "Are you sure you wanna register it? "} %>
 </div>
 <% end %> 
 

@@ -12,6 +12,10 @@ FactoryBot.define do
     expired_at { '2021-05-15 03:33:33' }
     status { 2 }
     priority { 2 }
+    after(:build) do |task2|
+      label2 = create(:label2)
+      task2.labellings << build(:labelling, task: task2, label: label2)
+    end
   end
   factory :task3, class: "Task" do
     title { 'task3_title' }

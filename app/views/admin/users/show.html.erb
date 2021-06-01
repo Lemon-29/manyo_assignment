@@ -22,11 +22,15 @@
         <p><span class="item_name">Expired_at</span> <%= l task.expired_at, format: :long %></p>
         <p><span class="item_name">Status</span> <%= task.status %></p>
         <p><span class="item_name">priority</span> <%= task.priority %></p>
+        <div class="label_block">
+          <% task.labels.each do |label| %>
+            <span class="label label-success"><%= label.name %></span>
+          <% end %>
+        </div>
       </div>
        <div class="btns">
         <div class="innerblock">
           <%= link_to 'Check the details', task_path(task.id), class: "show_task" %>
-          <%= link_to "Edit tasks", edit_task_path(task.id), data: { confirm: 'Are you sure you wanna edit?' }, class: "edit_task" %>
           <%= link_to 'Delate the task', task_path(task.id), method: :delete ,data: { confirm: 'Are you sure you wanna delete it?' }, class: "delete_task" %>
         </div>
       </div>
